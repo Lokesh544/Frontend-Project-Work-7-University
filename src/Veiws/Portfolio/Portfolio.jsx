@@ -69,19 +69,26 @@ export default function Portfolio({ portfolioData }) {
             <div className="w-full m-6 p-4 flex flex-wrap justify-center gap-4">
               {data.projects.map((ele, id) => (
                 <ContainerPopover
-                  className="max-w-60 py-1 px-3 text-center"
+                  className="max-w-60 py-2 px-3 text-center"
                   key={id}
                 >
                   <TypographyH4 className="p-2">{ele.name}</TypographyH4>
                   <p className="leading-7 mt-1">Skills:</p>
                   <ContainerPopover className="m-2 mt-0 p-4 flex flex-wrap justify-center gap-4">
                     {mapToList(ele.skills).map((ele, id) => (
-                      <Badge className="py-1 px-3" key={id}>
+                      <Badge
+                        className="py-1 px-3 shadow hover:scale-105 hover:shadow-lg"
+                        key={id}
+                      >
                         {ele}
                       </Badge>
                     ))}
                   </ContainerPopover>
-                  <Button className="p-2" variant="link" asChild>
+                  <Button
+                    className="p-2 shadow hover:scale-105 hover:shadow-lg"
+                    variant="link"
+                    asChild
+                  >
                     <a
                       className="text-center w-full"
                       href={herfLink(ele?.link)}
@@ -100,7 +107,10 @@ export default function Portfolio({ portfolioData }) {
             <TypographyH2 className="p-4">Skills</TypographyH2>
             <ContainerPopover className="w-full m-6 p-4 flex flex-wrap justify-center gap-4">
               {data.skills.map((ele, id) => (
-                <Badge className="py-1 px-3" key={id}>
+                <Badge
+                  className="py-1 px-3 shadow hover:scale-105 hover:shadow-lg"
+                  key={id}
+                >
                   {ele}
                 </Badge>
               ))}
@@ -110,20 +120,55 @@ export default function Portfolio({ portfolioData }) {
         <div className="flex flex-col items-center flex-wrap capitalize my-4">
           <TypographyH2 className="p-4">Contact</TypographyH2>
           <ContainerPopover className="my-4 p-4 w-2/3">
+            <TypographyH4 className="text-center">Get in Touch</TypographyH4>
             <div>
-              <Label></Label>
-              <Input></Input>
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" />
+            </div>
+            <div>
+              <Label htmlFor="number">Phone Number</Label>
+              <Input id="number" />
+            </div>
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" />
+            </div>
+            <div className="flex justify-center">
+              <Button
+                className="m-4 shadow-lg hover:scale-105 hover:shadow-xl"
+                type="submit"
+              >
+                Submit
+              </Button>
             </div>
           </ContainerPopover>
           <div className="w-full flex justify-center gap-10">
-            <Button>
-              <MailIcon /> Email
+            <Button
+              className="shadow-lg hover:scale-105 hover:shadow-xl"
+              asChild
+            >
+              <a href={"tel:" + data?.number} target="blank">
+                <PhoneIcon /> Number
+              </a>
             </Button>
-            <Button>
-              <PhoneIcon /> Number
+            <Button
+              className="shadow-lg hover:scale-105 hover:shadow-xl"
+              asChild
+            >
+              <a
+                href={data?.resumeLink ? herfLink(data.resumeLink) : ""}
+                target="blank"
+              >
+                <FileTextIcon /> Resume
+              </a>
             </Button>
-            <Button>
-              <FileTextIcon /> Resume
+            <Button
+              className="shadow-lg hover:scale-105 hover:shadow-xl"
+              asChild
+            >
+              <a href={"mailto:" + data?.email} target="blank">
+                <MailIcon /> Email
+              </a>
             </Button>
           </div>
         </div>
