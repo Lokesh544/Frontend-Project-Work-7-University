@@ -8,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { shadow } from "@/lib/customTailwind";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -28,7 +29,7 @@ export default function SkillsArea({
     skills.push(
       <Badge
         key={i}
-        className="shrink-0 py-1 px-4 cursor-pointer shadow hover:scale-110 hover:shadow-md"
+        className="shrink-0 py-1 px-4 cursor-pointer shadow shadow-glow-foreground hover:shadow-glow-foreground hover:scale-110 hover:shadow-md"
         variant="outline"
         {...(!disableDelete && {
           onClick: () => {
@@ -46,7 +47,12 @@ export default function SkillsArea({
   }
 
   return (
-    <ContainerBase className="flex w-full px-4 py-2 capitalize gap-3 flex-wrap">
+    <ContainerBase
+      className={cn(
+        "flex w-full px-4 py-2 capitalize gap-3 flex-wrap shadow-glow",
+        shadow.g.base
+      )}
+    >
       {skills}
       {!disableAdd && (
         <Popover>

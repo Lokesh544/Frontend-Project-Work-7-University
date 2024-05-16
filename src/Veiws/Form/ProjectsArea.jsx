@@ -18,9 +18,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { herfLink } from "@/lib/utils";
+import { cn, herfLink } from "@/lib/utils";
 import { useState } from "react";
 import SkillsArea from "./SkillsArea";
+import { shadow } from "@/lib/customTailwind";
 
 export default function ProjectsArea({ field }) {
   if (typeof field?.value == "undefined") field.value = {};
@@ -35,7 +36,10 @@ export default function ProjectsArea({ field }) {
     projects.push(
       <ContainerPopover
         key={i}
-        className="min-w-40 w-[30%] h-fit shrink-0 p-4 shadow"
+        className={cn(
+          "min-w-40 w-[30%] h-fit shrink-0 p-4 shadow-glow",
+          shadow.g.base
+        )}
       >
         <TypographyH4 className="text-center my-2">
           {field.value[i]?.name || `Project ${i}`}
@@ -60,7 +64,9 @@ export default function ProjectsArea({ field }) {
         <ContainerBase className="flex justify-around border-0 my-2">
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="font-semibold">Edit</Button>
+              <Button className="font-semibold shadow-glow hover:shadow-glow-foreground shadow-lg">
+                Edit
+              </Button>
             </DialogTrigger>
             <ProjectDialog
               title="Edit Project"
@@ -74,7 +80,7 @@ export default function ProjectsArea({ field }) {
           </Dialog>
           <Button
             variant="destructive"
-            className="font-semibold"
+            className="font-semibold shadow-red-300 hover:shadow-red-500 shadow-lg"
             onClick={() => {
               let value = field.value;
               delete value[i];
@@ -89,11 +95,18 @@ export default function ProjectsArea({ field }) {
   }
 
   return (
-    <ContainerBase className="w-full px-4 py-2 gap-4 flex flex-wrap">
+    <ContainerBase
+      className={cn(
+        "w-full px-4 py-2 gap-4 flex flex-wrap shadow-glow",
+        shadow.g.lg
+      )}
+    >
       {projects}
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="self-center">Add Project</Button>
+          <Button className="self-center shadow-glow hover:shadow-glow-foreground shadow-lg">
+            Add Project
+          </Button>
         </DialogTrigger>
         <ProjectDialog
           title="New Project"

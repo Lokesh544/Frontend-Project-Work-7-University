@@ -12,6 +12,8 @@ import FormTextArea from "./FormTextArea";
 import FormInput from "./FormInput";
 import SkillsArea from "./SkillsArea";
 import ProjectsArea from "./ProjectsArea";
+import { cn } from "@/lib/utils";
+import { shadow } from "@/lib/customTailwind";
 
 const formSchema = z.object({
   name: z.string().min(3, { message: "Must be 3 or more characters long" }),
@@ -161,7 +163,9 @@ export default function PortfolioForm() {
         key={useId()}
         className="w-full mt-4 shrink-0 border-b border-b-border"
       >
-        <TypographyH3>{ele.title}</TypographyH3>
+        <TypographyH3 className="text-shadow-lg shadow-glow">
+          {ele.title}
+        </TypographyH3>
       </div>
     );
     ele.questions.map((ele) => {
@@ -219,7 +223,12 @@ export default function PortfolioForm() {
 
   return (
     <main className="bg-background min-h-screen p-8">
-      <Container className="min-h-full max-w-6xl m-auto p-8">
+      <Container
+        className={cn(
+          "min-h-full max-w-6xl m-auto p-8 shadow-glow",
+          shadow.g.lg
+        )}
+      >
         <Form {...form}>
           <form
             onSubmit={(event) => {
@@ -233,7 +242,10 @@ export default function PortfolioForm() {
           >
             {formfeilds}
             <div className="shrink-0 w-full flex justify-around">
-              <Button className="font-bold" type="submit">
+              <Button
+                className="font-bold shadow-glow hover:shadow-glow-foreground shadow-lg"
+                type="submit"
+              >
                 Submit
               </Button>
             </div>
