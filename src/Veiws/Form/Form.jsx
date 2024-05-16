@@ -14,11 +14,11 @@ import SkillsArea from "./SkillsArea";
 import ProjectsArea from "./ProjectsArea";
 
 const formSchema = z.object({
-  name: z.string(),
+  name: z.string().min(3, { message: "Must be 3 or more characters long" }),
   titlePhotoURL: z.string(),
   jobProfile: z.string(),
   aboutMePhotoURL: z.string(),
-  job: z.string(),
+  job: z.string().min(3, { message: "Must be 3 or more characters long" }),
   summary: z.string(),
   college: z.string(),
   collegeCourse: z.string(),
@@ -212,10 +212,9 @@ export default function PortfolioForm() {
   });
 
   function onSubmit(values) {
-    console.log(values, sessionStorage.getItem("portfolio"));
     sessionStorage.setItem("portfolio", JSON.stringify(values));
-    console.log(values, sessionStorage.getItem("portfolio"));
-    // window.location.href = "/Portfolio";
+    // console.log(values, sessionStorage.getItem("portfolio"));
+    window.location.href = "/portfolio";
   }
 
   return (
