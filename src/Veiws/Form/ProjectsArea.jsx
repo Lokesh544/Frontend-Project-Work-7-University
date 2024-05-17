@@ -32,7 +32,7 @@ export default function ProjectsArea({ field }) {
   const [projectId, setProjectId] = useState(1);
   const projects = [];
   for (let i in field.value) {
-    if (parseInt(i) > projectId) setProjectId(parseInt(i) + 1);
+    if (parseInt(i) >= projectId) setProjectId(parseInt(i) + 1);
     projects.push(
       <ContainerPopover
         key={i}
@@ -80,7 +80,7 @@ export default function ProjectsArea({ field }) {
           </Dialog>
           <Button
             variant="destructive"
-            className="font-semibold shadow-red-300 hover:shadow-red-500 shadow-lg"
+            className="font-semibold shadow-red-300 hover:shadow-red-500 shadow-md"
             onClick={() => {
               let value = field.value;
               delete value[i];
@@ -93,6 +93,7 @@ export default function ProjectsArea({ field }) {
       </ContainerPopover>
     );
   }
+  console.log(projectId);
 
   return (
     <ContainerBase

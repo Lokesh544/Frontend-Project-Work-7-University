@@ -217,7 +217,6 @@ export default function PortfolioForm() {
 
   function onSubmit(values) {
     sessionStorage.setItem("portfolio", JSON.stringify(values));
-    // console.log(values, sessionStorage.getItem("portfolio"));
     window.location.href = "/portfolio";
   }
 

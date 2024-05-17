@@ -26,29 +26,39 @@ export default function Portfolio({ portfolioData }) {
       : undefined;
   data?.skills && (data.skills = mapToList(data?.skills));
   data?.projects && (data.projects = mapToList(data?.projects));
-  console.log(data);
 
   return (
     <main className="bg-background min-h-screen p-8">
-      {/* <Container className="min-h-full max-w-6xl m-auto p-8 shadow-[0_0_15px_rgba(0,_0,_0,_0.1)] shadow-glow"> */}
       <Container
         className={cn(
           "min-h-full max-w-6xl m-auto p-8 shadow-glow",
           shadow.g.lg
         )}
       >
-        <div className="flex h-[33vh] my-4">
+        <div className="flex h-[40vh] mb-8">
           <div className="min-w-40 w-1/2 flex flex-col justify-center items-center">
             <TypographyH2 className="text-shadow-xl">{data?.name}</TypographyH2>
             <TypographyP>{data?.jobProfile}</TypographyP>
           </div>
           <div className="grow">
-            <Image src="" alt="" className="h-1/3" />
+            <Image
+              src={data.titlePhotoURL}
+              alt="Title Pic"
+              width="400"
+              height="300"
+              className="rounded-lg h-full mx-auto"
+            />
           </div>
         </div>
-        <div className="flex h-[33vh] my-4">
+        <div className="flex h-[40vh] my-4">
           <div className="grow">
-            <Image src="" alt="" className="h-1/3" />
+            <Image
+              src={data.aboutMePhotoURL}
+              alt="About Pic"
+              width="400"
+              height="300"
+              className="rounded-lg h-full mx-auto"
+            />
           </div>
           <div className="min-w-40 w-1/2 flex flex-col justify-center items-center">
             <TypographyH2 className="text-shadow-xl">{data?.job}</TypographyH2>
