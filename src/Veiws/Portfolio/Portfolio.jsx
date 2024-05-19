@@ -42,7 +42,7 @@ export default function Portfolio({ portfolioData }) {
           </div>
           <div className="grow">
             <Image
-              src={data.titlePhotoURL}
+              src={data?.titlePhotoURL}
               alt="Title Pic"
               width="400"
               height="300"
@@ -53,7 +53,7 @@ export default function Portfolio({ portfolioData }) {
         <div className="flex h-[40vh] my-4">
           <div className="grow">
             <Image
-              src={data.aboutMePhotoURL}
+              src={data?.aboutMePhotoURL}
               alt="About Pic"
               width="400"
               height="300"
