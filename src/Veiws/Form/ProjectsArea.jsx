@@ -52,7 +52,11 @@ export default function ProjectsArea({ field }) {
           disableAdd={true}
           disableDelete={true}
         />
-        <Button variant="link" asChild>
+        <Button
+          className="block normal-case text-ellipsis overflow-hidden whitespace-nowrap shadow-glow text-shadow-md hover:scale-105 hover:text-shadow-lg"
+          variant="link"
+          asChild
+        >
           <a
             className="text-center w-full"
             href={herfLink(field.value[i]?.link)}

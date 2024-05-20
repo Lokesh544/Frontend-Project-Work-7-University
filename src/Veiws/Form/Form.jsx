@@ -1,6 +1,6 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
+import { ContainerAnimatedBorder } from "@/components/ui/Container";
 import { TypographyH3 } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
@@ -130,8 +130,8 @@ const formTemplate = [
 
 export default function PortfolioForm() {
   const sessionData =
-    typeof sessionStorage != "undefined"
-      ? JSON.parse(sessionStorage.getItem("portfolio"))
+    typeof localStorage != "undefined"
+      ? JSON.parse(localStorage.getItem("portfolio"))
       : undefined;
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -161,7 +161,7 @@ export default function PortfolioForm() {
     formfeilds.push(
       <div
         key={useId()}
-        className="w-full mt-4 shrink-0 border-b border-b-border"
+        className="w-full mt-4 shrink-0 capitalize border-b border-b-border"
       >
         <TypographyH3 className="text-shadow-lg shadow-glow">
           {ele.title}
@@ -216,17 +216,14 @@ export default function PortfolioForm() {
   });
 
   function onSubmit(values) {
-    sessionStorage.setItem("portfolio", JSON.stringify(values));
+    localStorage.setItem("portfolio", JSON.stringify(values));
     window.location.href = "/portfolio";
   }
 
   return (
     <main className="bg-background min-h-screen p-8">
-      <Container
-        className={cn(
-          "min-h-full max-w-6xl m-auto p-8 shadow-glow",
-          shadow.g.lg
-        )}
+      <ContainerAnimatedBorder
+        className={cn("min-h-full max-w-6xl m-auto p-8")}
       >
         <Form {...form}>
           <form
@@ -250,7 +247,7 @@ export default function PortfolioForm() {
             </div>
           </form>
         </Form>
-      </Container>
+      </ContainerAnimatedBorder>
     </main>
   );
 }

@@ -1,0 +1,59 @@
+.ContainerAnimatedBorder {
+  /* transform: translate(0); */
+  transform-style: preserve-3d;
+}
+
+.ContainerAnimatedBorder:before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  transform: translate3d(0, 0, -1px);
+  scale: 300%;
+  background: linear-gradient(
+    hsla(var(--glow)),
+    hsla(var(--glow)),
+    hsla(var(--glow)),
+    hsla(var(--glow)),
+    #2693fa96,
+    #6db5f88e,
+    #2693fa96,
+    hsla(var(--glow)),
+    hsla(var(--glow)),
+    hsla(var(--glow)),
+    hsla(var(--glow))
+  );
+  filter: blur(10px);
+  animation: 5s infinite linear ContainerAnimatedBorderAnimation;
+}
+
+.dark .ContainerAnimatedBorder:before {
+  background: conic-gradient(
+    from 90deg at 40% -25%,
+    #0084ff66,
+    #ffd700,
+    #f79d03,
+    #ee6907,
+    #e6390a,
+    #de0d0d,
+    #d61039,
+    #cf1261,
+    #c71585,
+    #cf1261,
+    #d61039,
+    #de0d0d,
+    #ee6907,
+    #f79d03,
+    #ffd700,
+    #ffd700,
+    #ffd700
+  );
+}
+
+@keyframes ContainerAnimatedBorderAnimation {
+  0% {
+    rotate: 0;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

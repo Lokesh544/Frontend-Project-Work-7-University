@@ -2,6 +2,7 @@
 
 import {
   Container,
+  ContainerAnimatedBorder,
   ContainerBase,
   ContainerPopover,
 } from "@/components/ui/Container";
@@ -21,23 +22,22 @@ import Image from "next/image";
 
 export default function Portfolio({ portfolioData }) {
   const data =
-    portfolioData || typeof sessionStorage != "undefined"
-      ? JSON.parse(sessionStorage.getItem("portfolio"))
+    portfolioData || typeof localStorage != "undefined"
+      ? JSON.parse(localStorage.getItem("portfolio"))
       : undefined;
   data?.skills && (data.skills = mapToList(data?.skills));
   data?.projects && (data.projects = mapToList(data?.projects));
 
   return (
     <main className="bg-background min-h-screen p-8">
-      <Container
-        className={cn(
-          "min-h-full max-w-6xl m-auto p-8 shadow-glow",
-          shadow.g.lg
-        )}
+      <ContainerAnimatedBorder
+        className={cn("min-h-full max-w-6xl m-auto p-8")}
       >
         <div className="flex h-[40vh] mb-8">
           <div className="min-w-40 w-1/2 flex flex-col justify-center items-center">
-            <TypographyH2 className="text-shadow-xl">{data?.name}</TypographyH2>
+            <TypographyH2 className="capitalize text-shadow-xl">
+              {data?.name}
+            </TypographyH2>
             <TypographyP>{data?.jobProfile}</TypographyP>
           </div>
           <div className="grow">
@@ -61,32 +61,38 @@ export default function Portfolio({ portfolioData }) {
             />
           </div>
           <div className="min-w-40 w-1/2 flex flex-col justify-center items-center">
-            <TypographyH2 className="text-shadow-xl">{data?.job}</TypographyH2>
+            <TypographyH2 className="capitalize text-shadow-xl">
+              {data?.job}
+            </TypographyH2>
             <TypographyP>{data?.summary}</TypographyP>
           </div>
         </div>
         <div className="flex flex-col items-center capitalize my-4">
-          <TypographyH2 className="m-4 p-2 text-shadow-xl">
+          <TypographyH2 className="capitalize m-4 p-2 text-shadow-xl">
             Education
           </TypographyH2>
           <div className="w-full flex justify-around flex-wrap my-4">
             <ContainerPopover
               className={cn(
-                "w-1/3 p-6 gap-4 flex flex-col items-center shadow-glow",
-                shadow.g.base
+                "w-1/3 p-6 gap-4 flex flex-col items-center shadow-glow hover:scale-105",
+                shadow.g.md
               )}
             >
-              <TypographyH4>School: {data?.school}</TypographyH4>
+              <TypographyH4 className="capitalize">
+                School: {data?.school}
+              </TypographyH4>
               <TypographyH4>Classes: {data?.schoolClasses}</TypographyH4>
               <TypographyH4>Year: {data?.schoolYear}</TypographyH4>
             </ContainerPopover>
             <ContainerPopover
               className={cn(
-                "w-1/3 p-6 gap-4 flex flex-col items-center shadow-glow",
-                shadow.g.base
+                "w-1/3 p-6 gap-4 flex flex-col items-center shadow-glow hover:scale-105",
+                shadow.g.md
               )}
             >
-              <TypographyH4>College: {data?.college}</TypographyH4>
+              <TypographyH4 className="capitalize">
+                College: {data?.college}
+              </TypographyH4>
               <TypographyH4>Course: {data?.collegeCourse}</TypographyH4>
               <TypographyH4>Year: {data?.collegeYear}</TypographyH4>
             </ContainerPopover>
@@ -99,8 +105,8 @@ export default function Portfolio({ portfolioData }) {
               {data.projects.map((ele, id) => (
                 <ContainerPopover
                   className={cn(
-                    "w-72 py-2 px-3 text-center shadow-glow",
-                    shadow.g.base
+                    "w-72 py-2 px-3 text-center shadow-glow hover:scale-105",
+                    shadow.g.md
                   )}
                   key={id}
                 >
@@ -117,7 +123,7 @@ export default function Portfolio({ portfolioData }) {
                     ))}
                   </ContainerPopover>
                   <Button
-                    className="p-2 shadow-glow text-shadow-md hover:scale-105 hover:text-shadow-lg"
+                    className="block normal-case p-2 text-ellipsis overflow-hidden whitespace-nowrap shadow-glow text-shadow-md hover:scale-105 hover:text-shadow-lg"
                     variant="link"
                     asChild
                   >
@@ -136,7 +142,9 @@ export default function Portfolio({ portfolioData }) {
         )}
         {data?.skills && (
           <div className="flex flex-col items-center flex-wrap capitalize my-4 px-6">
-            <TypographyH2 className="p-4 text-shadow-xl">Skills</TypographyH2>
+            <TypographyH2 className="capitalize p-4 text-shadow-xl">
+              Skills
+            </TypographyH2>
             <ContainerPopover
               className={cn(
                 "w-full my-6 p-4 flex flex-wrap justify-center gap-4 shadow-glow",
@@ -150,7 +158,9 @@ export default function Portfolio({ portfolioData }) {
           </div>
         )}
         <div className="flex flex-col items-center flex-wrap capitalize my-4">
-          <TypographyH2 className="p-4 text-shadow-xl">Contact</TypographyH2>
+          <TypographyH2 className="capitalize p-4 text-shadow-xl">
+            Contact
+          </TypographyH2>
           <ContainerPopover
             className={cn("my-4 p-4 w-2/3 shadow-glow", shadow.g.lg)}
           >
@@ -206,7 +216,7 @@ export default function Portfolio({ portfolioData }) {
             </Button>
           </div>
         </div>
-      </Container>
+      </ContainerAnimatedBorder>
     </main>
   );
 }
