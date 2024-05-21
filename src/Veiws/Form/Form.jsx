@@ -161,7 +161,7 @@ export default function PortfolioForm() {
     formfeilds.push(
       <div
         key={useId()}
-        className="w-full mt-4 shrink-0 capitalize border-b border-b-border"
+        className="w-full mt-4 max-sm:mt-2 shrink-0 capitalize border-b border-b-border"
       >
         <TypographyH3 className="text-shadow-lg shadow-glow">
           {ele.title}
@@ -221,9 +221,11 @@ export default function PortfolioForm() {
   }
 
   return (
-    <main className="bg-background min-h-screen p-8">
+    <main className="bg-background min-h-screen p-8 max-sm:px-2 max-sm:py-4">
       <ContainerAnimatedBorder
-        className={cn("min-h-full max-w-6xl m-auto p-8")}
+        className={cn(
+          "min-h-full max-w-6xl m-auto p-8 max-sm:py-4 max-sm:px-2"
+        )}
       >
         <Form {...form}>
           <form
@@ -234,7 +236,7 @@ export default function PortfolioForm() {
                 onSubmit(values);
               })(event);
             }}
-            className="space-y-8 flex flex-wrap justify-between"
+            className="space-y-8 max-sm:space-y-2 flex flex-wrap justify-between"
           >
             {formfeilds}
             <div className="shrink-0 w-full flex justify-around">

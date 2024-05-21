@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export default function FormInput({ field }) {
   return (
-    <FormInputBase field={field} className="w-[48%]">
+    <FormInputBase field={field} className="sm:w-[48%]">
       <Input
         className={cn(shadow.g.base)}
         placeholder={formNameSchema[field.name]?.placeholder}

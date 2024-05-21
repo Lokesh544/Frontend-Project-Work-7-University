@@ -37,7 +37,7 @@ export default function ProjectsArea({ field }) {
       <ContainerPopover
         key={i}
         className={cn(
-          "min-w-40 w-[30%] h-fit shrink-0 p-4 shadow-glow",
+          "min-w-40 w-full h-fit shrink-0 p-4 max-sm:p-2 shadow-glow",
           shadow.g.base
         )}
       >
@@ -53,7 +53,7 @@ export default function ProjectsArea({ field }) {
           disableDelete={true}
         />
         <Button
-          className="block normal-case text-ellipsis overflow-hidden whitespace-nowrap shadow-glow text-shadow-md hover:scale-105 hover:text-shadow-lg"
+          className="block normal-case text-ellipsis overflow-hidden whitespace-nowrap max-sm:px-2 shadow-glow text-shadow-md hover:scale-105 hover:text-shadow-lg"
           variant="link"
           asChild
         >
@@ -102,7 +102,7 @@ export default function ProjectsArea({ field }) {
   return (
     <ContainerBase
       className={cn(
-        "w-full px-4 py-2 gap-4 flex flex-wrap shadow-glow",
+        "w-full px-4 max-sm:px-2 py-2 gap-4 max-sm:gap-2 flex flex-wrap shadow-glow",
         shadow.g.lg
       )}
     >

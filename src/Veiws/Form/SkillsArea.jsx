@@ -49,7 +49,7 @@ export default function SkillsArea({
   return (
     <ContainerBase
       className={cn(
-        "flex w-full px-4 py-2 capitalize gap-3 flex-wrap shadow-glow",
+        "flex w-full px-4 max-sm:px-2 py-2 capitalize gap-3 flex-wrap shadow-glow",
         shadow.g.base
       )}
     >

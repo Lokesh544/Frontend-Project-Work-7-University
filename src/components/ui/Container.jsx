@@ -32,9 +32,9 @@ export function ContainerAnimatedBorder({ children, className, ...props }) {
   return (
     <ContainerBase
       className={cn(
-        "[--border-width:0.75rem]",
+        "[--border-width:0.75rem] max-sm:[--border-width:0.5rem]",
         className,
-        "p-[--border-width] block overflow-hidden border-0 bg-inherit"
+        "max-sm:p-[--border-width] p-[--border-width] block overflow-hidden border-0 bg-inherit"
       )}
     >
       <ContainerBase
